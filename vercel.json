@@ -3,7 +3,9 @@
   "buildCommand": "vite build",
   "outputDirectory": "dist/client",
   "framework": null,
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
-    { "source": "/((?!assets/).*)", "destination": "/index.html" }
+    { "source": "/((?!assets/|favicon.ico|robots.txt|sitemap.xml).*)", "destination": "/index.html" }
   ]
 }
