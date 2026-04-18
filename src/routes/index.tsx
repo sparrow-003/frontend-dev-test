@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { AlertCircle, Building2, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
   Select,
@@ -19,8 +18,7 @@ import {
   type Filters,
   type View,
 } from "@/components/companies/CompanyFilters";
-import { fetchCompanies } from "@/lib/companies-api";
-import type { Company } from "@/data/companies";
+import { companies as initialCompanies } from "@/data/companies";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -37,33 +35,14 @@ const initialFilters: Filters = {
 };
 
 function Index() {
-  const [data, setData] = useState<Company[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  // Local dataset — load instantly, no async/loading state.
+  const data = initialCompanies;
+  const error: string | null = null;
 
   const [filters, setFilters] = useState<Filters>(initialFilters);
   const [view, setView] = useState<View>("grid");
   const [sort, setSort] = useState<SortKey>("name-asc");
   const [page, setPage] = useState(1);
-
-  useEffect(() => {
-    let cancelled = false;
-    setLoading(true);
-    setError(null);
-    fetchCompanies()
-      .then((d) => {
-        if (!cancelled) setData(d);
-      })
-      .catch((e: Error) => {
-        if (!cancelled) setError(e.message ?? "Something went wrong");
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   // Reset to first page whenever filters/sort change
   useEffect(() => {
@@ -164,8 +143,6 @@ function Index() {
               <AlertTitle>Couldn't load companies</AlertTitle>
               <AlertDescription>{error}</AlertDescription>
             </Alert>
-          ) : loading ? (
-            <LoadingState view={view} />
           ) : filtered.length === 0 ? (
             <EmptyState onReset={() => setFilters(initialFilters)} />
           ) : view === "grid" ? (
@@ -180,7 +157,7 @@ function Index() {
         </section>
 
         {/* Pagination */}
-        {!loading && !error && filtered.length > 0 && totalPages > 1 && (
+        {!error && filtered.length > 0 && totalPages > 1 && (
           <nav className="mt-10 flex items-center justify-center gap-2" aria-label="Pagination">
             <Button
               variant="outline"
@@ -224,37 +201,6 @@ function Index() {
           <span>© {new Date().getFullYear()} — Built with React & Tailwind</span>
         </div>
       </footer>
-    </div>
-  );
-}
-
-function LoadingState({ view }: { view: View }) {
-  if (view === "table") {
-    return (
-      <div className="space-y-2 rounded-xl border border-border/60 bg-card p-4 shadow-card">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <Skeleton key={i} className="h-12 w-full" />
-        ))}
-      </div>
-    );
-  }
-  return (
-    <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-      {Array.from({ length: 6 }).map((_, i) => (
-        <div key={i} className="rounded-xl border border-border/60 bg-card p-6 shadow-card">
-          <div className="flex items-center gap-4">
-            <Skeleton className="h-14 w-14 rounded-xl" />
-            <div className="flex-1 space-y-2">
-              <Skeleton className="h-5 w-2/3" />
-              <Skeleton className="h-3 w-full" />
-            </div>
-          </div>
-          <div className="mt-5 flex gap-2">
-            <Skeleton className="h-6 w-20" />
-            <Skeleton className="h-6 w-24" />
-          </div>
-        </div>
-      ))}
     </div>
   );
 }
