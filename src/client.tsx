@@ -1,4 +1,5 @@
 import { createRoot } from "react-dom/client";
+import { RouterProvider } from "@tanstack/react-router";
 import { getRouter } from "./router";
 
 declare global {
@@ -21,4 +22,4 @@ if (!rootElement) {
 
 const root = createRoot(rootElement);
 
-root.render(<router.RouterProvider router={router} />);
+root.render(<RouterProvider router={router} />);
