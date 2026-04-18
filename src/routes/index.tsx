@@ -36,9 +36,8 @@ const initialFilters: Filters = {
 
 function Index() {
   // Local dataset — load instantly, no async/loading state.
-  const data: Company[] = initialCompanies;
+  const data = initialCompanies;
   const error: string | null = null;
-  const loading = false;
 
   const [filters, setFilters] = useState<Filters>(initialFilters);
   const [view, setView] = useState<View>("grid");
