@@ -144,8 +144,6 @@ function Index() {
               <AlertTitle>Couldn't load companies</AlertTitle>
               <AlertDescription>{error}</AlertDescription>
             </Alert>
-          ) : loading ? (
-            <LoadingState view={view} />
           ) : filtered.length === 0 ? (
             <EmptyState onReset={() => setFilters(initialFilters)} />
           ) : view === "grid" ? (
@@ -160,7 +158,7 @@ function Index() {
         </section>
 
         {/* Pagination */}
-        {!loading && !error && filtered.length > 0 && totalPages > 1 && (
+        {!error && filtered.length > 0 && totalPages > 1 && (
           <nav className="mt-10 flex items-center justify-center gap-2" aria-label="Pagination">
             <Button
               variant="outline"
@@ -204,37 +202,6 @@ function Index() {
           <span>© {new Date().getFullYear()} — Built with React & Tailwind</span>
         </div>
       </footer>
-    </div>
-  );
-}
-
-function LoadingState({ view }: { view: View }) {
-  if (view === "table") {
-    return (
-      <div className="space-y-2 rounded-xl border border-border/60 bg-card p-4 shadow-card">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <Skeleton key={i} className="h-12 w-full" />
-        ))}
-      </div>
-    );
-  }
-  return (
-    <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-      {Array.from({ length: 6 }).map((_, i) => (
-        <div key={i} className="rounded-xl border border-border/60 bg-card p-6 shadow-card">
-          <div className="flex items-center gap-4">
-            <Skeleton className="h-14 w-14 rounded-xl" />
-            <div className="flex-1 space-y-2">
-              <Skeleton className="h-5 w-2/3" />
-              <Skeleton className="h-3 w-full" />
-            </div>
-          </div>
-          <div className="mt-5 flex gap-2">
-            <Skeleton className="h-6 w-20" />
-            <Skeleton className="h-6 w-24" />
-          </div>
-        </div>
-      ))}
     </div>
   );
 }
