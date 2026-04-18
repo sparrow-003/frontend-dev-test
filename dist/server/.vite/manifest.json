@@ -6,29 +6,29 @@
     "isDynamicEntry": true
   },
   "D:/frontend-dev-test/src/styles.css": {
-    "file": "assets/styles-B4B35cQa.css",
+    "file": "assets/styles-C-ZV_VgI.css",
     "src": "D:/frontend-dev-test/src/styles.css"
   },
-  "_router-uk8ci5ol.js": {
-    "file": "assets/router-uk8ci5ol.js",
+  "_router-pg7tZfQ8.js": {
+    "file": "assets/router-pg7tZfQ8.js",
     "name": "router",
     "isDynamicEntry": true,
     "imports": [
-      "_worker-entry-BspIflvH.js"
+      "_worker-entry-Cqk9ixVo.js"
     ],
     "dynamicImports": [
       "src/routes/index.tsx?tsr-split=component"
     ],
     "assets": [
-      "assets/styles-B4B35cQa.css"
+      "assets/styles-C-ZV_VgI.css"
     ]
   },
-  "_worker-entry-BspIflvH.js": {
-    "file": "assets/worker-entry-BspIflvH.js",
+  "_worker-entry-Cqk9ixVo.js": {
+    "file": "assets/worker-entry-Cqk9ixVo.js",
     "name": "worker-entry",
     "dynamicImports": [
       "tanstack-start-manifest:v",
-      "_router-uk8ci5ol.js",
+      "_router-pg7tZfQ8.js",
       "node_modules/@tanstack/react-start/dist/plugin/default-entry/start.ts",
       "%23tanstack-start-plugin-adapters"
     ]
@@ -40,17 +40,17 @@
     "isDynamicEntry": true
   },
   "src/routes/index.tsx?tsr-split=component": {
-    "file": "assets/index-CCvKz7RC.js",
+    "file": "assets/index-CNMhxVN4.js",
     "name": "index",
     "src": "src/routes/index.tsx?tsr-split=component",
     "isDynamicEntry": true,
     "imports": [
-      "_worker-entry-BspIflvH.js",
-      "_router-uk8ci5ol.js"
+      "_worker-entry-Cqk9ixVo.js",
+      "_router-pg7tZfQ8.js"
     ]
   },
   "tanstack-start-manifest:v": {
-    "file": "assets/_tanstack-start-manifest_v-RX5saaZL.js",
+    "file": "assets/_tanstack-start-manifest_v-CeArI3SP.js",
     "name": "_tanstack-start-manifest_v",
     "src": "tanstack-start-manifest:v",
     "isDynamicEntry": true
@@ -61,7 +61,7 @@
     "src": "virtual:cloudflare/worker-entry",
     "isEntry": true,
     "imports": [
-      "_worker-entry-BspIflvH.js"
+      "_worker-entry-Cqk9ixVo.js"
     ]
   }
 }
