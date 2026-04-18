@@ -1,5 +1,6 @@
 @import "tailwindcss" source(none);
 @source "../src";
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap");
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -18,11 +19,11 @@
  * 2. Register it in @theme inline as --color-<name>: var(--<name>)
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap");
 
 @theme inline {
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
   --color-primary-glow: var(--primary-glow);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -92,11 +93,13 @@
   --gradient-hero: linear-gradient(135deg, oklch(0.62 0.21 35) 0%, oklch(0.72 0.19 45) 100%);
   --gradient-subtle: linear-gradient(180deg, oklch(0.985 0.008 85) 0%, oklch(0.96 0.018 75) 100%);
   --shadow-elegant: 0 20px 60px -20px oklch(0.62 0.21 35 / 0.25);
-  --shadow-card: 0 2px 8px -2px oklch(0.18 0.025 50 / 0.08), 0 8px 24px -8px oklch(0.18 0.025 50 / 0.06);
-  --shadow-card-hover: 0 8px 16px -4px oklch(0.18 0.025 50 / 0.12), 0 20px 40px -12px oklch(0.62 0.21 35 / 0.18);
+  --shadow-card:
+    0 2px 8px -2px oklch(0.18 0.025 50 / 0.08), 0 8px 24px -8px oklch(0.18 0.025 50 / 0.06);
+  --shadow-card-hover:
+    0 8px 16px -4px oklch(0.18 0.025 50 / 0.12), 0 20px 40px -12px oklch(0.62 0.21 35 / 0.18);
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -159,18 +162,35 @@
     font-feature-settings: "ss01", "cv11";
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
   }
 }
 
 @layer utilities {
-  .font-display { font-family: var(--font-display); }
-  .bg-gradient-hero { background: var(--gradient-hero); }
-  .bg-gradient-subtle { background: var(--gradient-subtle); }
-  .shadow-elegant { box-shadow: var(--shadow-elegant); }
-  .shadow-card { box-shadow: var(--shadow-card); }
-  .shadow-card-hover { box-shadow: var(--shadow-card-hover); }
-  .transition-smooth { transition: var(--transition-smooth); }
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+  .bg-gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .shadow-card-hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
 }
