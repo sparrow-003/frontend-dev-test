@@ -35,37 +35,15 @@ const initialFilters: Filters = {
 };
 
 function Index() {
-  const [data, setData] = useState<Company[] | null>(() => {
-    // Initialize synchronously when the data source resolves immediately.
-    let initial: Company[] | null = null;
-    fetchCompanies().then((d) => (initial = d));
-    return initial;
-  });
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(data === null);
+  // Local dataset — load instantly, no async/loading state.
+  const data: Company[] = initialCompanies;
+  const error: string | null = null;
+  const loading = false;
 
   const [filters, setFilters] = useState<Filters>(initialFilters);
   const [view, setView] = useState<View>("grid");
   const [sort, setSort] = useState<SortKey>("name-asc");
   const [page, setPage] = useState(1);
-
-  useEffect(() => {
-    if (data !== null) return;
-    let cancelled = false;
-    fetchCompanies()
-      .then((d) => {
-        if (!cancelled) setData(d);
-      })
-      .catch((e: Error) => {
-        if (!cancelled) setError(e.message ?? "Something went wrong");
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [data]);
 
   // Reset to first page whenever filters/sort change
   useEffect(() => {
