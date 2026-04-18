@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { AlertCircle, Building2, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
   Select,
@@ -19,8 +18,7 @@ import {
   type Filters,
   type View,
 } from "@/components/companies/CompanyFilters";
-import { fetchCompanies } from "@/lib/companies-api";
-import type { Company } from "@/data/companies";
+import { companies as initialCompanies, type Company } from "@/data/companies";
 
 export const Route = createFileRoute("/")({
   component: Index,
