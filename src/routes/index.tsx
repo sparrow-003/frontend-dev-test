@@ -18,7 +18,7 @@ import {
   type Filters,
   type View,
 } from "@/components/companies/CompanyFilters";
-import { companies as initialCompanies, type Company } from "@/data/companies";
+import { companies as initialCompanies } from "@/data/companies";
 
 export const Route = createFileRoute("/")({
   component: Index,
