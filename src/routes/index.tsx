@@ -37,9 +37,14 @@ const initialFilters: Filters = {
 };
 
 function Index() {
-  const [data, setData] = useState<Company[] | null>(null);
+  const [data, setData] = useState<Company[] | null>(() => {
+    // Initialize synchronously when the data source resolves immediately.
+    let initial: Company[] | null = null;
+    fetchCompanies().then((d) => (initial = d));
+    return initial;
+  });
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(data === null);
 
   const [filters, setFilters] = useState<Filters>(initialFilters);
   const [view, setView] = useState<View>("grid");
@@ -47,9 +52,8 @@ function Index() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
+    if (data !== null) return;
     let cancelled = false;
-    setLoading(true);
-    setError(null);
     fetchCompanies()
       .then((d) => {
         if (!cancelled) setData(d);
@@ -63,7 +67,7 @@ function Index() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [data]);
 
   // Reset to first page whenever filters/sort change
   useEffect(() => {
