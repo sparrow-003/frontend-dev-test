@@ -6,4 +6,15 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-export default defineConfig();
+export default defineConfig({
+  tanstackStart: {
+    prerender: {
+      enabled: true,
+      crawlLinks: true,
+      retryCount: 2,
+    },
+    pages: [
+      { path: "/", prerender: { enabled: true, outputPath: "/index.html" } },
+    ],
+  },
+});
