@@ -33,10 +33,14 @@ export const Route = createRootRoute({
       { name: "description", content: "Browse a curated directory of companies. Filter by industry, location and size, sort by rating or year founded, and switch between grid and table views." },
       { name: "author", content: "Lovable" },
       { property: "og:title", content: "Companies Directory — Discover innovators worldwide" },
-      { property: "og:description", content: "Filter, sort and explore a handpicked directory of companies across industries." },
+      { property: "og:description", content: "Browse a curated directory of companies. Filter by industry, location and size, sort by rating or year founded, and switch between grid and table views." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Companies Directory — Discover innovators worldwide" },
+      { name: "twitter:description", content: "Browse a curated directory of companies. Filter by industry, location and size, sort by rating or year founded, and switch between grid and table views." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/212500b7-02bb-46d4-96e9-943dca54defc" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/212500b7-02bb-46d4-96e9-943dca54defc" },
     ],
     links: [
       {
